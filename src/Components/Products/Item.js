@@ -4,7 +4,7 @@ import { MaterialCommunityIcons as Icon } from '@expo/vector-icons' ;
 
 import StarRating from '../StarRating';
 
-export default function ProductItem({data}) {
+export default function ProductItem({data, deleteProduct}) {
   return (
     <View style={styles.container}>
       <Image source={{uri: data.image}} style={styles.image} />
@@ -15,7 +15,7 @@ export default function ProductItem({data}) {
           <StarRating number={data.rating} />
         </View>
       </View>
-      <Icon name="delete-outline" style={styles.delete} />
+      <Icon name="delete-outline" style={styles.delete} onPress={()=>deleteProduct(data.id)} />
     </View>
   );
 }
