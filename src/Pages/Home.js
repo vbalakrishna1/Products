@@ -7,16 +7,25 @@ import Fab from '../Components/Fab';
 
 export default function Home() {
 
+  const [isGroupByMerchant, setIsGroupByMerchant] = useState(false);
   const [isFabTouched, setIsFabTouched] = useState(false);
 
   function toggleFab() {
     setIsFabTouched(!isFabTouched);
   }
 
+  function toggleGroupByMerchant() {
+    setIsGroupByMerchant(!isGroupByMerchant);
+  }
+
   return (
     <View style={styles.container}>
-      <Header />
-      <Products showAddProduct={isFabTouched} closeAddProduct={toggleFab} />
+      <Header isGroupByMerchant={isGroupByMerchant} onPressLink={toggleGroupByMerchant} />
+      <Products 
+        showAddProduct={isFabTouched} 
+        closeAddProduct={toggleFab} 
+        isGroupByMerchant={isGroupByMerchant} 
+      />
       <Fab onPress={toggleFab} />
     </View>
   );

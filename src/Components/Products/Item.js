@@ -9,7 +9,7 @@ export default function ProductItem({data, deleteProduct}) {
     <View style={styles.container}>
       <Image source={{uri: data.image}} style={styles.image} />
       <View style={styles.content}>
-        <Text style={styles.title}>{data.name}</Text>
+        <Text style={styles.title} numberOfLines={1}>{data.name}</Text>  
         <View style={styles.secondRow}>
           <Text style={styles.price}>{data.price}</Text>
           <StarRating number={data.rating} />
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1, 
-    paddingLeft: 16
+    paddingHorizontal: 16
   },
   title: {
     fontSize: 16
