@@ -69,15 +69,15 @@ export default function Products({ showAddProduct, closeAddProduct, isGroupByMer
       const showProducts = showMerchantProducts.includes(merchant);
       return (
         <View key={merchant} style={{paddingTop: 16}}>
-          <TouchableOpacity style={styles.sectionHeader}  onPress={() => toggleMerchant(merchant)}>
+          <View style={styles.sectionHeader}>
             <View style={{flex: 1}}>
               <View style={styles.merchantImageContainer}>
                 <Image source={{uri: merchantLogo[merchant]}} resizeMode='contain' style={styles.merchantImage} />
               </View>
             </View>
-            <Icon name={showProducts ? 'chevron-up' : 'chevron-down'} style={styles.icon} />
-          </TouchableOpacity>
-          { showProducts 
+            <Icon name={!showProducts ? 'chevron-up' : 'chevron-down'} style={styles.icon} onPress={() => toggleMerchant(merchant)}/>
+          </View>
+          { !showProducts 
             ? productsList(data)
             : null 
           }
@@ -91,7 +91,7 @@ export default function Products({ showAddProduct, closeAddProduct, isGroupByMer
       <View style={styles.container}>
         <Add visible={showAddProduct} close={closeAddProduct} save={addProduct} />
         { 
-          isGroupByMerchant 
+          !isGroupByMerchant 
           ? groupByMerchant()
           : productsList(products)
         }
@@ -123,6 +123,6 @@ const styles = StyleSheet.create({
   },
   placeholder: {
     alignSelf: 'center', 
-    color: '#eee'
+    flex:1
   }
 });
